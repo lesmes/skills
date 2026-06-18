@@ -2,6 +2,8 @@
 
 Skills for the agentic era — by [Lesmes López Peña](https://lesmes.com).
 
+> Companion to the launch post: [*Will Your Software Survive the Agents? Two Skills for the Agentic Era*](https://lesmes.com/blog/will-your-software-survive-the-agents-two-skills-for-the-agentic-era).
+
 When agents stopped autocompleting and started writing their own code, running it, and calling tools when they needed them, two questions stopped being rhetorical:
 
 1. **Will this thing survive?** Given a tool, SaaS, or technology that already exists, what are its odds in the agentic era?
@@ -21,7 +23,7 @@ Output: a survival forecast, a trajectory (improving or eroding), the competitiv
 
 ### [agent-first-readiness](agent-first-readiness/) — the design lens
 
-An original framework that synthesizes ideas from Steve Yegge (desire paths), Andrej Karpathy (build for agents), Alex Zhang (scaffold-LMs), Andrew Ng (Context Hub) and Danila Poyarkov (figma-use). It scores a product across six dimensions:
+An original framework that synthesizes ideas from [Steve Yegge](https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b) (desire paths), [Andrej Karpathy](https://x.com/karpathy/status/2004607146781278521) (build for agents), [Alex Zhang](https://alexzhang13.github.io/blog/2026/scaffold/) (scaffold-LMs), [Andrew Ng](https://x.com/AndrewYNg/status/2031051809499054099) (Context Hub) and [Danila Poyarkov](https://github.com/dannote/figma-use) (figma-use). It scores a product across six dimensions:
 
 1. **Discoverability** — can an agent find you at all?
 2. **Consumability** — can it use you without friction?
@@ -63,11 +65,11 @@ Both skills are released under the **MIT License** (see each folder's `LICENSE`)
 
 The MIT covers the original layers authored here: numerical calibration, scoring rubrics, case libraries, anti-bias checklists, output formats, and the six-dimension model for agent-first readiness. The underlying ideas remain attributed to their authors:
 
-- **Steve Yegge** — *Software Survival 3.0* (the survival framework)
-- **Andrej Karpathy** — building for agents, Skills as an abstraction layer
-- **Alex Zhang** — *Language Models will be Scaffolds*
-- **Andrew Ng** — Context Hub / chub
-- **Danila Poyarkov** — figma-use / OpenPencil (single operation, dual output, token efficiency)
+- **Steve Yegge** — [*Software Survival 3.0*](https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b) (the survival framework)
+- **Andrej Karpathy** — [thread on X on the new agentic abstraction layer](https://x.com/karpathy/status/2004607146781278521) (building for agents, Skills as an abstraction layer)
+- **Alex Zhang** — [*Language Models will be Scaffolds*](https://alexzhang13.github.io/blog/2026/scaffold/)
+- **Andrew Ng** — [Context Hub (chub)](https://x.com/AndrewYNg/status/2031051809499054099)
+- **Danila Poyarkov** — [figma-use](https://github.com/dannote/figma-use) (single operation, dual output, token efficiency)
 
 Read their work first. These skills only operationalize it.
 
