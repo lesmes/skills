@@ -24,6 +24,7 @@ SOFTWARE.
 
 Scope note: This MIT license covers the original contribution of this skill
 (the numerical calibration, scoring guides, case/benchmark library, anti-bias
-checklist, v4 adjustments, and output format). The underlying survival
-framework and any short quotations are by Steve Yegge ("Software Survival 3.0")
-and remain his; they are used here with attribution. See SKILL.md.
+checklist, prior-research phase, version revisions, and output format). The
+underlying survival framework and any short quotations are by Steve Yegge
+("Software Survival 3.0") and remain his; they are used here with attribution.
+See SKILL.md.

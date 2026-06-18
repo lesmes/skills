@@ -5,11 +5,13 @@ description: >
   and technologies in the AI era using Steve Yegge's formula (Software Survival 3.0).
   Use when the user asks whether a tool or SaaS will survive AI, about the future
   viability of software, competitive analysis against AI agents, or comparisons
-  of technological survival. Triggers include questions like "will X survive",
-  "future of X", "will AI replace X", "analyze X with the formula", "survival ratio".
+  of technological survival. Triggers (English and Spanish): "will X survive",
+  "future of X", "will AI replace X", "analyze X with the formula", "survival
+  ratio", "sobrevivirá X", "futuro de X", "la IA reemplazará X", "analiza X con
+  la fórmula", "ratio de supervivencia".
 ---
 
-# Software Survival Analyzer v4
+# Software Survival Analyzer v5
 
 Analyzes tools and platforms using Steve Yegge's survival formula.
 
@@ -27,9 +29,9 @@ https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b
 - **This skill is a derivative operational layer** authored by **Lesmes López Peña**
   (https://lesmes.com, https://github.com/lesmes/skills). The author's contribution
   is the numerical calibration of the formula, the scoring guides, the
-  case/benchmark library, the anti-bias checklist, the geographic and
-  language-bias adjustments (v4), and the output format. None of these layers are
-  Yegge's.
+  case/benchmark library, the anti-bias checklist, the geographic and language-bias
+  adjustments (v4), the prior research phase and maturity filter (v5), and the
+  output format. None of these layers are Yegge's.
 
 If you find this useful, read Yegge's original article first. This skill only
 operationalizes his thinking; it does not replace it.
@@ -60,6 +62,69 @@ so agents will prefer tools that save cognition. Those that do not save it will 
 This timeline helps estimate horizons: software threatened by individual agents has
 roughly 1-2 years; software threatened by multi-agent orchestration has roughly 3-4 years.
 
+## Prior Phase · Adapted research (proposed, before Step 0)
+
+> **Why this phase exists**: the model's premise is that the rate of change in the AI
+> era is annual (the 2023→2026 timeline itself assumes it). Scoring from frozen
+> knowledge contradicts the model's thesis. In addition, research improves the analysis
+> **asymmetrically**: it hits the volatile variables (Fc/desire paths, competition,
+> trajectory) and barely touches the structural ones (Savings, Usage). It doesn't
+> improve everything equally; it improves what moves the most.
+
+**Activation rule (decide BEFORE proposing anything):**
+
+1. **Is there already fresh information in context?** If the user just provided
+   research, pasted recent sources, or the conversation already contains the current
+   state of the software, **do not propose research**: use what's there and move to
+   Step 0. The real gate is "do I have fresh info?", not "is it research time?".
+   Proposing it anyway is redundant.
+2. **Does the software justify it?** This phase adds little for:
+   - Stable infrastructure with high absurdity (PostgreSQL, grep, Git): scores are
+     stable by definition; research returns little new signal.
+   - Obscure, internal, or private tools with no public information: research returns noise.
+   In those cases, acknowledge it and don't insist.
+3. **In all other cases** (SaaS, platforms, tools in active evolution, anything with
+   live competition), **propose adapted research to the user** before starting, and
+   execute it if they accept.
+
+**Research brief adapted to the formula** (not a generic "research the company" brief
+— targeted searches tied to the model's concrete inputs):
+
+| Search for | Feeds into | Guiding question |
+|------------|------------|------------------|
+| Does it have an MCP server / API / SDK / CLI? Docs for agents? Programmatic-surface launches. | **Fc, desire paths (lever 5), Kc** | Does the agent reach it with low friction and know it exists? |
+| Recent entrants and competitors; who attacks which layer; how they position. | **Relative competition (Step 7b), anchors** | Has the survival threshold risen? Is there a new competitor to use as an anchor? |
+| Launches, pivots, financials, direction signals, leadership statements. | **Trajectory (↑↑/↑/→/↓/↓↓)** | Is the tool improving or worsening its position against agents? |
+| Do LLMs natively do what the tool does? Features that generate what a model already generates? | **Intermediation test (0b), Savings** | What percentage of the value intermediates a task the AI already does? |
+
+**Mandatory research filter (announced ≠ shipped ≠ adopted):**
+
+Research introduces **recency and marketing bias** if not filtered. Before incorporating
+any finding into the scoring, classify by maturity:
+
+- **Announced**: the press release exists, not the product. Near-zero weight in scoring.
+- **Shipped but beta/early**: it exists but it's immature. Don't move a variable to the
+  extreme because of this. Example: a beta MCP server justifies lowering Fc, but not to
+  the level of a mature API (Stripe, Vercel).
+- **Shipped and adopted**: evidence of real usage (metrics, cases). Full weight.
+
+Beware of the inverse mirage: new features can **worsen** the profile even when they
+look like momentum. Example: product expansion that adds intermediation-exposed surface
+raises test 0b instead of strengthening the moat. More features ≠ better survival.
+
+**Output of this phase:**
+
+- Filtered findings feed Step 0 (a new competitor becomes an anchor) and the scoring of
+  Fc, Kc, competition and trajectory.
+- **Baseline vs. updated pattern**: if the software already has an entry in
+  `references/known-cases.md`, do NOT mentally overwrite the baseline. Present **two
+  scenarios side by side** (frozen entry vs. fresh evidence) and explain which variables
+  change and why. The entries in the reference file are baselines from the last
+  calibration, not permanent truth.
+- When the research justifies a stable change, **propose to the user that the entry be
+  updated** in `references/known-cases.md` (with a calibration date), so that the
+  reference file doesn't fall stale exactly in a domain where freshness is the point.
+
 ## Step 0: Binary Tests (mandatory)
 
 Before scoring anything, answer TWO binary questions:
@@ -68,19 +133,20 @@ Before scoring anything, answer TWO binary questions:
 
 > **"Would it be absurd for an AI agent to try to re-synthesize this from scratch?"**
 
-- **YES, it would be absurd** -> Strong survival signal. Example: re-synthesizing PostgreSQL,
-  Git, or Kubernetes from scratch would be "nuts" (Yegge). Proceed with the numerical
-  analysis expecting a high ratio.
-- **NO, it would not be absurd** -> Warning sign. The agent can produce something equivalent
-  with little effort. The ratio will be low unless H (the human coefficient) protects it.
-- **DEPENDS** -> The tool has components that would indeed be absurd to re-synthesize
+- **YES, it would be absurd** → Strong survival signal. Example: re-synthesizing
+  PostgreSQL, Git, or Kubernetes from scratch would be "nuts" (Yegge). Proceed with
+  the numerical analysis expecting a high ratio.
+- **NO, it would not be absurd** → Warning sign. The agent can produce something
+  equivalent with little effort. The ratio will be low unless H (the human coefficient)
+  protects it.
+- **DEPENDS** → The tool has components that would indeed be absurd to re-synthesize
   and others that would not. Analyze them separately if possible.
 
-The complementary calibration question (Yegge): **how many decades of human trial-and-error
-does this tool have compressed inside it?** Software with high knowledge compression is
-"crystallized cognition", a real financial asset, just as money is crystallized human labor
-(Brendan Hopper via Yegge). If the answer is "none" or "little", the absurdity test is
-probably a NO.
+The complementary calibration question (Yegge): **how many decades of human
+trial-and-error does this tool have compressed inside it?** Software with high
+knowledge compression is "crystallized cognition", a real financial asset, just as
+money is crystallized human labor (Brendan Hopper via Yegge). If the answer is "none"
+or "little", the absurdity test is probably a NO.
 
 ### 0b. Intermediation Test
 
@@ -89,16 +155,16 @@ probably a NO.
 Yegge is explicit: *"any software that's intermediating between humans and AIs, or is trying
 to do any sort of 'smart thing' that AIs will soon be able to do themselves, is in real trouble."*
 
-- **YES, it intermediates** -> A warning sign as strong as failing the absurdity test.
+- **YES, it intermediates** → A warning sign as strong as failing the absurdity test.
   Includes: LLM wrappers, tools that do OCR/classification/generation that LLMs do natively,
   visual automation that agents can code directly.
-- **NO, it does not intermediate** -> Good. The software offers its own value; it is not an
+- **NO, it does not intermediate** → Good. The software offers its own value; it is not an
   unnecessary layer.
-- **PARTIALLY** -> Identify which parts intermediate (vulnerable) and which do not (resistant).
+- **PARTIALLY** → Identify which parts intermediate (vulnerable) and which do not (resistant).
   **Estimate what percentage of the product's value lies in the part that intermediates.**
-  If >60% intermediates -> treat as YES for the forecast.
-  If <40% intermediates -> moderate warning sign, not blocking.
-  If 40-60% -> gray zone, document it and reflect it in the Savings score.
+  If >60% intermediates → treat as YES for the forecast.
+  If <40% intermediates → moderate warning sign, not blocking.
+  If 40-60% → gray zone, document it and reflect it in the Savings score.
 
 **Both tests must be documented** in the analysis. If a piece of software fails BOTH tests
 (it is not absurd to re-synthesize it AND it intermediates), the forecast rarely rises above
@@ -121,7 +187,7 @@ It is crucial to classify first:
 **Important**: Many products are hybrids. A hosting provider with a clean API (Cloudflare) is
 evaluated differently from one without an API (legacy web panel). Identify the type BEFORE scoring.
 
-## The Formula (v2, corrected and calibrated)
+## The Formula (v2 — corrected and calibrated)
 
 ### Base Ratio (pure cognitive efficiency)
 
@@ -133,7 +199,7 @@ Base_ratio = (Savings × Usage) / ((Knowledge_cost + Friction_cost) × 10)
 
 H does NOT multiply the base ratio. It is an **independent protective force** that can
 raise the forecast category. Yegge describes it as "a different selection pressure
-entirely, human preference instead of efficiency."
+entirely — human preference instead of efficiency."
 
 ```
 Final_forecast = Category(Base_ratio) + H_boost
@@ -237,9 +303,9 @@ Calibration question: **If you ask an English-language LLM to solve a problem in
 would it mention this tool spontaneously?** If the answer is no, Knowledge_cost >= 35.
 
 Examples:
-- Stripe -> any LLM mentions it for payments -> Knowledge_cost=10
-- Holded -> no global LLM mentions it for invoicing -> Knowledge_cost=35-45
-- SAP -> mentions it but with friction ("too complex") -> Knowledge_cost=25-30
+- Stripe → any LLM mentions it for payments → Knowledge_cost=10
+- Holded → no global LLM mentions it for invoicing → Knowledge_cost=35-45
+- SAP → mentions it but with friction ("too complex") → Knowledge_cost=25-30
 
 Do not confuse "popular among humans in my country" with "present in the training data of LLMs".
 They are very different things.
@@ -288,7 +354,7 @@ protection because it depends on people SPECIFICALLY valuing that humans are inv
 | <0.5 | 🔴 Critical | Agents already do this better/cheaper. |
 
 **Note**: Apply the H boost afterwards to obtain the final forecast. Example: Figma has a
-base ratio of ~5.5 (🟠 At risk) but H=75 gives it +1.5 categories -> 🟡 Viable/Protected.
+base ratio of ~5.5 (🟠 At risk) but H=75 gives it +1.5 categories → 🟡 Viable/Protected.
 
 ## Relative Competition (Step 7b)
 
@@ -315,12 +381,12 @@ The levers are the concrete strategies to improve each variable:
 
 | # | Lever | Variable it improves | Example | Key question |
 |---|-------|----------------------|---------|--------------|
-| 1 | **Knowledge compression** | -> Savings | Git, PostgreSQL, Temporal | Does it crystallize insights that would be expensive to rediscover? How many decades of trial-and-error does it compress? |
-| 2 | **Substrate efficiency** | -> Savings | grep, ImageMagick, calculators | Does it do on CPU what would be expensive to do on GPU/inference? |
-| 3 | **Broad utility** | -> Usage | SQL, Temporal, Docker | Does it apply to many different contexts? |
+| 1 | **Knowledge compression** | → Savings | Git, PostgreSQL, Temporal | Does it crystallize insights that would be expensive to rediscover? How many decades of trial-and-error does it compress? |
+| 2 | **Substrate efficiency** | → Savings | grep, ImageMagick, calculators | Does it do on CPU what would be expensive to do on GPU/inference? |
+| 3 | **Broad utility** | → Usage | SQL, Temporal, Docker | Does it apply to many different contexts? |
 | 4 | **Publicity/Awareness** | lowers Knowledge_cost | Everything in the training data | Do agents know it exists? |
 | 5 | **Low friction / Desire paths** | lowers Friction_cost | Beads CLI, Stripe API | Does the tool work the way the agent expects it to work? |
-| 6 | **Human coefficient** | -> H | Slack, Figma, multiplayer games | Does the value depend on involving humans? |
+| 6 | **Human coefficient** | → H | Slack, Figma, multiplayer games | Does the value depend on involving humans? |
 
 ### Desire Paths: expanded section (Lever 5)
 
@@ -365,6 +431,14 @@ Trajectories are justified by:
 
 ## Analysis Process
 
+### Prior Phase (before Step 0): Adapted research
+
+> Apply the **Activation rule** from the Prior Phase · Adapted research section: if there is
+> no fresh information in context and the software justifies it, propose research adapted to
+> the formula, execute it if the user accepts, and filter it by maturity
+> (announced/shipped/adopted). The findings feed steps 4 (comparables), 7b (competition), the
+> scoring of Fc/Kc, and the trajectory.
+
 ### Step 0 (BEFORE scoring): Calibration with comparables
 
 > **MANDATORY**: Before assigning numerical scores, identify the 2-3 closest comparables in
@@ -381,11 +455,11 @@ Trajectories are justified by:
 3. **Intermediation Test** (Step 0b): Does it intermediate between humans and tasks the AI will do? If PARTIAL, estimate the % of value that intermediates.
 4. **Identify comparables** in `references/known-cases.md`, use them as anchors BEFORE scoring
 5. **Score** each variable using the scoring guides AND the calibration anchors
-6. **Compute** the base ratio: `(Savings × Usage) / ((Knowledge_cost + Friction_cost) × 10)`
+6. **Compute** the base ratio: `(Savings × Usage) / ((Kc + Fc) × 10)`
 7. **Evaluate H** separately and determine the boost
 7b. **Relative competition**: identify direct competitors and compare ratios
 8. **Anti-bias checklist** (mandatory, see section below)
-9. **Apply** the base forecast + H boost -> final forecast
+9. **Apply** the base forecast + H boost → final forecast
 10. **Determine trajectory**: ↑↑ / ↑ / → / ↓ / ↓↓ with justification
 11. **Compare** the final ratio with the comparables identified in step 4. If it differs >3x, review.
 12. **Map** the 6 levers: which are active? which could be activated?
@@ -406,6 +480,7 @@ common biases. If any answer is "yes", review the affected score.
 | 4 | Am I confusing "product successful among humans" with "product an agent would CHOOSE"? | Review Savings | Savings |
 | 5 | Is the product from a non-English-speaking market and I gave it Knowledge_cost < 30? | Raise Knowledge_cost | Knowledge_cost |
 | 6 | Was I generous with Savings because the product "has many features"? (Many features != high cognitive savings) | Review Savings | Savings |
+| 7 | Did I move a variable to an extreme because of something **just announced or in beta** (recency/marketing bias)? Or did I read as momentum an expansion that actually **raises intermediation**? | Reclassify the finding by maturity (announced/shipped/adopted) and reweight | Fc, Kc, Savings, trajectory |
 
 **Yegge's golden rule for bias**: The question is NOT "is it a good product?" but
 "would an agent stop to use it instead of doing it itself?" (Yegge: "Build something that
@@ -419,6 +494,12 @@ would be crazy to re-synthesize. Make it easy to find. Make it easy to use.")
 **What it does**: [brief description]
 **Type**: [per taxonomy]
 
+### Research / Sources
+- **Research performed**: YES/NO (if NO: reason — info already in context / stable infra / no public info)
+- **Information date**: [date of the research or sources used]
+- **Key findings by maturity**: [announced / shipped-beta / shipped-adopted] that affect the scoring
+- **Variables moved by the research**: [e.g. Fc, competition, trajectory]
+
 ### Binary Tests
 
 | Test | Result | Justification |
@@ -431,6 +512,9 @@ would be crazy to re-synthesize. Make it easy to find. Make it easy to use.")
 - Comparable 2: [tool] (Savings=X, Usage=X, Kc=X, Fc=X, ratio=X)
 
 ### Scoring
+
+> If the software already has an entry in `known-cases.md`, use **two columns**: "Baseline (entry)"
+> and "Updated (research)", indicating what changes and why. Otherwise, a single column.
 
 | Variable | Value | Justification (with reference to anchors) |
 |----------|-------|-------------------------------------------|
@@ -447,6 +531,7 @@ would be crazy to re-synthesize. Make it easy to find. Make it easy to use.")
 - [ ] I am not confusing "good product" with "product an agent would choose"
 - [ ] If a non-English-speaking market, Knowledge_cost adjusted upward
 - [ ] Savings measures cognition saved, not number of features
+- [ ] No variable moved to an extreme by recency/marketing bias (findings filtered by maturity)
 
 **Base ratio**: X.X
 **Base category**: 🟢/🟡/🟠/🔴 [Category]
@@ -481,10 +566,10 @@ would be crazy to re-synthesize. Make it easy to find. Make it easy to use.")
 
 ### Comparables
 - Similar to [known tool] (base ratio ~X, H=Y)
-- [Check: ratio differs <3x from comparable -> OK / ratio differs >3x -> REVIEW]
+- [Check: ratio differs <3x from comparable → OK / ratio differs >3x → REVIEW]
 
 ### Time Horizon
-- **No changes**: X-Y years (based on Yegge's timeline: completions -> chat -> agents -> orchestration)
+- **No changes**: X-Y years (based on Yegge's timeline: completions → chat → agents → orchestration)
 - **With an agent-first strategy**: X-Y years
 
 ### Conclusion
@@ -531,33 +616,60 @@ Yegge's original article (Software Survival 3.0, January 2026).
 1. **Geographic scope penalty in Usage**: Agents operate globally; regional software has
    restricted utility. Adjustment table added to the Usage guide.
    *Yegge validation*: "Aim to build software that lots of agents prefer to use in lots of
-   situations" (p.11), "lots of situations" implies global, not local, scope.
+   situations" (p.11) — "lots of situations" implies global, not local, scope.
 
 2. **Note on language bias in Knowledge_cost**: LLM training data is predominantly English.
    Software popular in non-English-speaking markets has Knowledge_cost 15-25 points higher
    than expected.
-   *Yegge validation*: "the energy to get it into their training sets" (p.5), training sets
+   *Yegge validation*: "the energy to get it into their training sets" (p.5) — training sets
    have inherent language bias.
 
-3. **Table of savings types** (algorithmic vs regulatory vs integrations vs UX): Distinguishes
+3. **Table of savings types** (algorithmic vs. regulatory vs. integrations vs. UX): Distinguishes
    between genuine "insight density" and other types of less defensible accumulated value.
    *Yegge validation*: "sheer insight density" (p.8) and "crystallized cognition" (p.8) always
    refer to deep engineering knowledge, not regulatory compliance.
 
 4. **Quantification of PARTIAL intermediation**: When test 0b is PARTIAL, estimate the % of
-   value that intermediates and use thresholds (>60% -> treat as YES, <40% -> moderate).
+   value that intermediates and use thresholds (>60% → treat as YES, <40% → moderate).
    *Yegge validation*: "any software that's intermediating..." (p.15) is a strong formulation
    that justifies treating PARTIAL >60% as YES.
 
 5. **Mandatory anti-bias checklist** (Step 8): 6 questions to detect common biases before
    issuing the final forecast. Prevents the most frequent errors.
    *Yegge validation*: The distinction of H as "different selection pressure entirely" (p.14)
-   is key, confusing "popular" with "efficient for agents" is bias #1.
+   is key — confusing "popular" with "efficient for agents" is bias #1.
 
 6. **Comparables BEFORE scoring** (Step 0, before step 5): Identify calibration anchors before
    assigning numerical scores to avoid scoring in absolute terms.
    *Yegge validation*: "Your software's survivability threshold floats above 1 when there's
-   competition" (p.6), without a comparative reference, the scores float.
+   competition" (p.6) — without a comparative reference, the scores float.
+
+### Changes in v5 (relative to v4)
+
+Changes derived from a real analysis (the Figma case, June 2026) in which the baseline's
+frozen knowledge had fallen out of date relative to the product's actual state.
+
+1. **Prior Phase of adapted research** (before Step 0): a proposed and skippable step, not a
+   mandatory gate. Includes an activation rule (do not propose if there is fresh info in
+   context, or if it's stable infrastructure / a tool with no public info), a brief tied to
+   the formula's variables (not generic), and a maturity filter. It sits before calibration
+   because research can reveal a new competitor that then becomes an anchor.
+   *Yegge validation*: the 2023→2026 timeline assumes annual change; scoring from frozen
+   knowledge contradicts the model's own premise.
+
+2. **Announced ≠ shipped ≠ adopted filter**: research improves the analysis asymmetrically
+   (it hits Fc/desire paths, competition and trajectory; barely touches Savings/Usage) and
+   introduces recency/marketing bias if not filtered by maturity. A beta feature does not
+   move a variable to the extreme; a product expansion can worsen the profile by raising
+   intermediation.
+
+3. **Anti-bias question 7** (Step 8): detects recency/marketing bias and the "momentum" mirage
+   that actually raises test 0b.
+
+4. **Baseline vs. updated pattern**: when the software already has an entry in
+   `known-cases.md`, the baseline is not overwritten; two scenarios are presented side by
+   side and the research can **propose updating the entry** (with a calibration date). The
+   output format adds a "Research / Sources" section and dual-column support in Scoring.
 
 ### Verification: how to know if your score is reasonable
 
