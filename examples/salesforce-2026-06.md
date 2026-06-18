@@ -1,6 +1,8 @@
 # Survival Analysis: Salesforce
 
-> Application of the **Software Survival Analyzer v5** (Steve Yegge's formula). A new case (no prior entry in `known-cases.md`), preceded by the Prior Research Phase because it's a large SaaS with active agentic offensive (Agentforce).
+> Application of the **Software Survival Analyzer** (Steve Yegge's formula). A new case (no prior entry in `known-cases.md`), preceded by the Prior Research Phase because it's a large SaaS with active agentic offensive (Agentforce).
+>
+> **Note**: this analysis was originally produced against **v5** of the skill. Its central methodological finding — that Salesforce's dominant moat is **data gravity + switching costs**, a third force the Yegge formula under-models — is exactly what motivated **v5.1's Step 7c** (a qualitative forecast adjustment, parallel to 7b, with anti-double-counting rule and an honesty caveat that it is an extension beyond strict Yegge). Where this document calls the gap "a methodological caveat", read it as **Step 7c** in the current method.
 
 **What it does**: The world's leading CRM platform. Customer management core (Sales, Service, Marketing, Commerce) plus a development platform (Apex, Flows, AppExchange), a data layer (Data 360), messaging (Slack), and since late 2024 an agentic layer (Agentforce) that deploys autonomous AI agents for service, sales, IT and back-office.
 
@@ -81,7 +83,7 @@ As with the Figma case, Salesforce's H has components with very different half-l
 
 **Effective H ≈ 58** (boost +1 category, 40-59 band). The bifurcation matters: most of the CRM's H is of the **erodable** type (governance) or **inertia** (lock-in), with a *durable slice* contributed by Slack.
 
-> **Method caveat (key for this case)**: Salesforce's largest real moat (data gravity + switching costs + organizational inertia) **does not fit cleanly** into Yegge's variables, which measure cognitive efficiency for agents (Savings) and human preference (H). It is neither: it's data gravity and inertia. The formula therefore probably **underestimates** Salesforce's short-term survival. I reflect it in the final forecast, not by forcing the variables.
+> **Method caveat (key for this case)** — *formalized as **Step 7c** in v5.1*: Salesforce's largest real moat (data gravity + switching costs + organizational inertia) **does not fit cleanly** into Yegge's two original forces, which measure cognitive efficiency for agents (Savings) and human preference (H). It is neither: it's data gravity and inertia. The formula therefore **underestimates** Salesforce's short-term survival. v5.1 captures this as a qualitative forecast adjustment parallel to 7b (modulates the threshold, not the ratio nor a new variable), with an explicit anti-double-counting rule and an erosion note (open standards like MCP make the data portable, eroding the very moat). It's reflected in the final forecast, not by forcing the variables.
 
 ---
 
@@ -149,7 +151,7 @@ The survival threshold rises with competition, and Salesforce is attacked on **t
 | 5 | Low friction / Desire paths | 🟡 | **Improving — the key story.** Historically 🔴 (complex APIs). Now aggressive push: Hosted MCP GA, Headless 360, AgentExchange. Half-mature and underlying complexity high. |
 | 6 | Human coefficient | 🟡 | Moderate and bifurcating. Governance (erodable) + lock-in (inertia, under-modeled by Yegge) + Slack's durable slice. |
 
-**Extra unmapped moat**: **data gravity + switching costs**. Salesforce's largest real defense, which the formula captures only in part (via Savings-integrations and H-oversight). It is the central caveat.
+**Third force (now formalized as Step 7c in v5.1)**: **data gravity + switching costs**. Salesforce's largest real defense, which the formula's two original forces capture only in part (via Savings-integrations and H-oversight). The remaining pure inertia — the data is already here and migrating is expensive — is what Step 7c absorbs as a qualitative forecast adjustment, with the anti-double-counting rule applied.
 
 ---
 
@@ -213,7 +215,7 @@ Salesforce is **more resilient than its ratio suggests** (5.5) and than its stoc
 
 ## Caveats
 
-- **Salesforce's dominant moat (data gravity + switching costs) is under-modeled by Yegge's formula**, which measures cognitive efficiency (Savings) and human preference (H), not data gravity or organizational inertia. The adjusted forecast corrects this qualitatively; the literal 5.5 ratio underestimates platform survival in the short term.
+- **Salesforce's dominant moat (data gravity + switching costs) is under-modeled by Yegge's two original forces** (cognitive efficiency in the ratio and human preference in H). v5.1 of the skill formalizes this as **Step 7c**: a qualitative forecast adjustment, parallel to 7b, with an anti-double-counting rule (the cognitive savings from canonical data go in Savings, the human governance goes in H, the *pure inertia* goes in 7c without being duplicated) and an erosion note (the moat erodes as open standards make the data portable to agents). The literal 5.5 ratio underestimates platform survival in the short term, which Step 7c absorbs in the adjusted forecast.
 - **Point-in-time and volatile numbers**: stock -30% in 2026, Q4 FY26 results (Feb 2026). Agent Albert is announced aspiration, not product.
 - **Source bias in the maturity check**: the ~58% accuracy figure and metrics like "77% of B2B implementations fail" come from critical sources or competitors (oliv.ai); treat as directional, not definitive. Financial metrics are corroborated (official release, transcript, multiple outlets).
 - **Double-edged agentic bet**: Agentforce working commercially (ARR +169%) does not equal a strengthened survival moat; it may accelerate the migration from high-margin seats to lower-margin consumption. The Q7 filter prevents confusing the two.

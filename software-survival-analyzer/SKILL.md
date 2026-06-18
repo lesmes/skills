@@ -11,7 +11,7 @@ description: >
   la fórmula", "ratio de supervivencia".
 ---
 
-# Software Survival Analyzer v5
+# Software Survival Analyzer v5.1
 
 Analyzes tools and platforms using Steve Yegge's survival formula.
 
@@ -30,8 +30,10 @@ https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b
   (https://lesmes.com, https://github.com/lesmes/skills). The author's contribution
   is the numerical calibration of the formula, the scoring guides, the
   case/benchmark library, the anti-bias checklist, the geographic and language-bias
-  adjustments (v4), the prior research phase and maturity filter (v5), and the
-  output format. None of these layers are Yegge's.
+  adjustments (v4), the prior research phase and maturity filter (v5), the
+  Step 7c data-gravity / switching-costs adjustment (v5.1), and the output format.
+  None of these layers are Yegge's. The Step 7c extension explicitly goes beyond
+  strict Yegge and is labeled as such inside the skill.
 
 If you find this useful, read Yegge's original article first. This skill only
 operationalizes his thinking; it does not replace it.
@@ -375,6 +377,53 @@ of ~8 and Holded has ~2, the competitive window closes.
 In domains with little competition (DNA sequencing, as Yegge mentions), even a modest ratio
 can be enough. In crowded domains, you need to stand out.
 
+## Data Gravity / Switching Costs (Step 7c)
+
+> **Extension beyond strict Yegge** (not something Yegge endorses; see honesty caveat at
+> the end). Modeled as a **qualitative forecast adjustment, analogous to Step 7b**: it
+> adjusts the survival threshold, NOT the ratio nor a new numerical variable.
+
+Yegge models two selection forces: cognitive efficiency (goes into the ratio) and human
+preference (goes into H). The Salesforce case surfaced a **third force** that is neither:
+**data gravity and switching costs** (incumbency). It is not that the agent "prefers" the
+tool, nor that the tool saves it insight density: it is that the customer's proprietary
+data **already lives there** and moving it is expensive and risky. Applies to any
+SaaS/enterprise platform with accumulated data (CRMs, ERPs, systems of record):
+Salesforce, SAP, ServiceNow, Workday, Jira.
+
+**When to apply the adjustment:**
+
+1. Is the tool's dominant moat **accumulated proprietary data + organizational migration
+   cost**, rather than cognitive efficiency or human preference?
+2. If YES, the formula **underestimates** short-term survival. Reflect it in the adjusted
+   forecast (typically: the *system-of-record / data layer* is safer than the ratio says),
+   explaining the correction instead of forcing Savings or H upward.
+
+**Anti-double-counting rule (critical):**
+
+Data gravity is NOT put simultaneously into Savings-integrations, H-oversight AND as a
+7c adjustment. That would count it two or three times and inflate the forecast. Clean
+decision:
+- The *genuine* cognitive savings an agent gets from canonical/governed data (via API/MCP)
+  DOES go in Savings (integrations type, range 20-40).
+- The need for a human approving / governing DOES go in H (trust/oversight, 40-60).
+- **Pure inertia** (the data is already here, migrating is expensive) is what goes in the
+  7c adjustment, and is NOT duplicated in the variables. If you already counted it in
+  Savings/H, do not add it again in 7c.
+
+**Erosion note (important):** data gravity erodes when open standards make the data
+portable to agents. Salesforce's own MCP / Headless 360 does exactly that: by going
+agent-first, a platform may be **eroding its own incumbency moat**. Unlike social H
+(durable), the data-gravity moat has an expiration date tied to portability-standards
+adoption.
+
+**Honesty caveat:** Yegge's model is agent-centric and somewhat greenfield (an agent
+choosing a tool). Data gravity is about displacing an incumbent with captive data, which
+his framework under-weights. The only legitimate hook with Yegge: he says software gets
+"routed around" and abandoned; data gravity is the friction that **slows down that
+routing** (just as 7b modulates the threshold). Label as extension, not as "Yegge
+validation".
+
 ## The 6 Survival Levers (Yegge)
 
 The levers are the concrete strategies to improve each variable:
@@ -458,6 +507,7 @@ Trajectories are justified by:
 6. **Compute** the base ratio: `(Savings × Usage) / ((Kc + Fc) × 10)`
 7. **Evaluate H** separately and determine the boost
 7b. **Relative competition**: identify direct competitors and compare ratios
+7c. **Data gravity / switching costs**: is the dominant moat proprietary data + migration inertia? If so, adjust the forecast upward (the formula underestimates it), without double-counting in Savings/H
 8. **Anti-bias checklist** (mandatory, see section below)
 9. **Apply** the base forecast + H boost → final forecast
 10. **Determine trajectory**: ↑↑ / ↑ / → / ↓ / ↓↓ with justification
@@ -481,6 +531,7 @@ common biases. If any answer is "yes", review the affected score.
 | 5 | Is the product from a non-English-speaking market and I gave it Knowledge_cost < 30? | Raise Knowledge_cost | Knowledge_cost |
 | 6 | Was I generous with Savings because the product "has many features"? (Many features != high cognitive savings) | Review Savings | Savings |
 | 7 | Did I move a variable to an extreme because of something **just announced or in beta** (recency/marketing bias)? Or did I read as momentum an expansion that actually **raises intermediation**? | Reclassify the finding by maturity (announced/shipped/adopted) and reweight | Fc, Kc, Savings, trajectory |
+| 8 | **(v5.1)** Is the dominant moat **data gravity / switching costs** (proprietary data + migration inertia)? Am I forcing it into Savings or H, or counting it twice? | Reflect it as a qualitative forecast adjustment (Step 7c), separate from Savings/H and without double counting | Forecast (not variables) |
 
 **Yegge's golden rule for bias**: The question is NOT "is it a good product?" but
 "would an agent stop to use it instead of doing it itself?" (Yegge: "Build something that
@@ -532,6 +583,7 @@ would be crazy to re-synthesize. Make it easy to find. Make it easy to use.")
 - [ ] If a non-English-speaking market, Knowledge_cost adjusted upward
 - [ ] Savings measures cognition saved, not number of features
 - [ ] No variable moved to an extreme by recency/marketing bias (findings filtered by maturity)
+- [ ] If dominant moat is data gravity / switching costs, reflected as a Step 7c qualitative adjustment without double-counting in Savings/H
 
 **Base ratio**: X.X
 **Base category**: 🟢/🟡/🟠/🔴 [Category]
@@ -671,6 +723,29 @@ frozen knowledge had fallen out of date relative to the product's actual state.
    side and the research can **propose updating the entry** (with a calibration date). The
    output format adds a "Research / Sources" section and dual-column support in Scoring.
 
+### Changes in v5.1 (relative to v5)
+
+Change derived from a real analysis (the Salesforce case, June 2026) in which the dominant
+moat did not fit any of the model's variables.
+
+1. **Third force: data gravity / switching costs** (Step 7c): Yegge models cognitive
+   efficiency (ratio) and human preference (H), but incumbency from accumulated proprietary
+   data is neither. Added as a **qualitative forecast adjustment analogous to 7b** (modulates
+   the threshold, not the ratio nor a new variable), with an explicit **anti-double-counting
+   rule** and a note on **erosion by open standards** (MCP makes the data portable, eroding
+   the very moat). Applies to SaaS/enterprise platforms with accumulated data (CRMs, ERPs,
+   systems of record).
+   *Caveat*: this is an extension beyond strict Yegge, not a Yegge endorsement. The only
+   legitimate hook: data gravity is the friction that slows down the "routing around" Yegge
+   describes.
+
+2. **Anti-bias question 8** (Step 8): detects when the dominant moat is data gravity and
+   prevents forcing it into Savings/H or counting it twice.
+
+3. **Why NOT a new numerical variable**: adding a numerical lock-in boost would have caused
+   double counting with Savings-integrations and H-oversight, and inflated the method's
+   bookkeeping. The qualitative adjustment (7b-style) captures the force without those costs.
+
 ### Verification: how to know if your score is reasonable
 
 1. Compute the ratio with the formula
@@ -681,6 +756,8 @@ frozen knowledge had fallen out of date relative to the product's actual state.
 5. The intermediation test must be consistent: if you said "YES it intermediates" but the
    ratio comes out >10, check whether it is really intermediating or has other value
 6. **New (v4)**: Run the anti-bias checklist BEFORE giving the final forecast
+7. **New (v5.1)**: If the dominant moat is data gravity, apply the Step 7c adjustment as a
+   qualitative forecast move, never by inflating Savings or H
 
 ## Reference Cases
 

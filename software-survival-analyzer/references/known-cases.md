@@ -1,4 +1,4 @@
-# Known Cases — Reference Benchmarks (v5)
+# Known Cases — Reference Benchmarks (v5.1)
 
 > Companion to the Software Survival Analyzer skill. The survival framework is
 > Steve Yegge's ("Software Survival 3.0", Medium, January 2026). The scoring,
@@ -225,30 +225,23 @@ These fields help calibrate correctly and avoid the biases documented in v4.
   - Note: the 2025-2026 product expansion (Sites, Buzz, Weave) adds intermediation-exposed surface; consistent with the thesis of cutting focus to Design/Dev Mode/FigJam/Make.
   - Full analysis: [`examples/figma-2026-06.md`](../../examples/figma-2026-06.md).
 
-### Salesforce (NEW in v5, calibration: June 2026)
-- **Type**: SaaS for humans + Platform/Marketplace + Tool for agents (emerging). Explicitly repositioning as the "operating system of the Agentic Enterprise."
-- **Absurdity test**: **DEPENDS** (weak via the engineering route). Re-synthesizing the CRM *application* (objects, workflows, a record base) would NOT be absurd; the CRM is not algorithmic insight density like PostgreSQL or Git. What IS irreplicable is the *system of record* — the customer's proprietary data accumulated over years, their specific configuration, integrations, and ecosystem. But that moat is **data + integration + inertia**, not "crystallized engineering cognition". In Yegge's strict terms (engineering insight density), the test is NO/weak; Salesforce's real moat is of another kind and is captured via H and Savings-integrations, not via a high ratio.
-- **Intermediation test**: **PARTIAL (~50%, gray zone)**. Much of the per-seat value is "a human doing cognitive work in an interface" (data entry, record updates, reports, forecasting, service-case responses) — exactly what agents now do natively. That is intermediation-exposed and a large fraction of what's paid per seat. They do NOT intermediate: custody and governance of the canonical data, compliance, security, transactional-backbone role. **Higher** than Figma (~40%) because CRM admin work is more directly automatable than design taste. Critical nuance: Agentforce **is** Salesforce automating that intermediated work — a recapture bet, not a moat.
-- **Savings type**: **Integrations + institutional/governance + data custody (system of record)**. NOT algorithmic.
+### Salesforce (NEW in v5.1)
+- **Type**: SaaS for humans + Platform/Marketplace + Tool for agents (emerging)
+- **Absurdity test**: DEPENDS (weak via the engineering route). The CRM app is not absurd to re-synthesize; the real moat is data/integration, not algorithmic (it is not Git/PostgreSQL).
+- **Intermediation test**: PARTIAL (~50%, gray zone). Per-seat work (data entry, reports, forecasting, service) intermediates; system of record / governance does not. Agentforce automates the intermediated part (recapture bet, not a moat).
+- **Savings type**: Integrations + institutional/governance + data custody (system of record). NOT algorithmic.
 - **Geographic scope**: Global · No adjustment to Usage
 - **Savings**: 45 · **Usage**: 65 · **Kc**: 18 · **Fc**: 35 · **H**: 58
 - **Base ratio**: (45×65) / ((18+35)×10) = 2925/530 = **5.5**
-- **H decomposed**: governance/trust/oversight ~57 (erodable, 40-60 band) + organizational lock-in / switching costs / "career-risk" ~50 (inertia, not human preference — only partly captured by Yegge) + Slack social ~85 (durable slice, social-infra type). Effective ~58.
-- **H boost**: +1 category (H=58)
-- **Trajectory**: → **Bifurcating**. Orchestration/data layer ↑ (Hosted MCP GA Enterprise+, Headless 360 rollout, Agentforce ARR $800M +169% YoY, RPO +14%, owns Slack at 1B msgs/day, MCP/A2A founding member); per-seat revenue ↓ (SaaSpocalypse, stock -30% in 2026, Agentforce at ~58% task accuracy per critical sources, mature ~10% growth).
-- **Desire Paths**: Historically high friction (REST/SOAP/Bulk/Metadata APIs mature but complex, governor limits, per-org config — anti-desire-paths, Fc historically ~40, worse than Jira). Improving with Hosted MCP (GA Enterprise+), Headless 360 ("all capability as API/MCP/CLI"), Data 360 MCP (Preview), AgentExchange. **Maturity-filtered**: does not fall to Stripe's level (10) because the underlying complexity remains (Salesforce's own Data 360 MCP blog admits its API surface "saturates the LLM context") and the MCP layer is new (partly Beta/Preview) with Agentforce at ~58% accuracy.
-- **Levers**:
-  - Knowledge compression 🔴/🟡 (no algorithmic insight density; "savings" is data/integration/governance, not engineering crystallization)
-  - Substrate efficiency 🔴 (Salesforce *consumes* inference, ~20T tokens; no CPU edge)
-  - Broad utility 🟢 (global enterprise ubiquity, ~150K customers, #1 CRM)
-  - Awareness 🟢 (massive Trailhead presence, official MCP docs)
-  - Low friction / Desire paths 🟡 (improving — the key story; Hosted MCP GA, Headless 360, AgentExchange)
-  - Human coefficient 🟡 (bifurcated and partially-modeled: governance erodable + lock-in is inertia, not preference + Slack durable slice)
-- **Key caveat (methodological)**: **data gravity + switching costs + organizational inertia** are the dominant real moat and they are **under-modeled** by the formula, which measures cognitive efficiency (Savings) and human preference (H), not data gravity or organizational inertia. Taken literally, the 5.5 ratio underestimates platform survival in the short term. Reflected in the bifurcated forecast, not by forcing the variables.
-- **Horizon**: 3-5 years for per-seat CRM revenue (under compression as agents take over the work); >5 years (potentially growing) for the platform/data/orchestration layer if the pivot executes and Agentforce accuracy improves from ~58%.
-- **Competition (Step 7b)**: attacked on two fronts simultaneously — Microsoft (Dynamics 365 + Copilot + Copilot Studio) on the **agent/orchestration layer** via M365 distribution; Databricks (CustomerLake / agentic CDPs) on the **data layer** (Data 360 still "an adjunct to the CRM, not a natively governed data lake"); ServiceNow on adjacent enterprise workflow; AI-native "agent OS" startups on the systemic per-seat thesis.
-- **v5 note**: This case surfaced a methodological caveat — data gravity / switching costs are real moats that the Yegge formula under-models. Captured as a caveat in the forecast rather than by forcing the variables. The Q7 anti-bias check explicitly prevented reading Agentforce's commercial success (ARR +169%) as a moat strengthening when much of it is Salesforce automating its own intermediated per-seat work (revenue migration from high-margin seats to lower-margin consumption, not moat building).
-- **Forecast**: 🟡 Viable → 🟢 Protected (platform / data / orchestration layer) **with per-seat revenue 🟠 At risk**. Mechanical math gives 🟢 Safe (5.5 + boost +1); the bifurcation reflects what the formula doesn't fully capture and what the per-seat work is genuinely exposed to.
+- **H decomposed**: governance ~57 (erodable) + lock-in ~50 (inertia) + Slack social ~85 (durable). Effective ~58, boost +1.
+- **Data gravity (Step 7c)**: dominant moat = proprietary data + switching costs. The formula UNDERESTIMATES platform survival. Reflected in the forecast, without double-counting in Savings/H. Erodable as Salesforce opens the data via MCP / Headless 360 (eroding its own moat).
+- **Trajectory**: → Bifurcating. Orchestration/data ↑ (Hosted MCP GA, Headless 360, Agentforce ARR $800M +169%, owns Slack); per-seat ↓ (SaaSpocalypse, stock -30% in 2026, Agentforce ~58% accuracy on simple tasks).
+- **Desire Paths**: Historically high (complex APIs, governor limits, Fc~40). Improving with Hosted MCP GA (Enterprise+), Headless 360 ("all capability as API/MCP/CLI"), AgentExchange, Data 360 MCP (Preview). Partly mature.
+- **Levers**: Broad utility ★, Awareness ★, Desire paths (under construction) ★
+- **Competition**: Microsoft (agent layer, Copilot/Dynamics), Databricks (data layer, agentic CDP), ServiceNow (workflow; Salesforce counter-attacks its ITSM).
+- **Horizon**: 3-5 years for per-seat revenue; >5 years (or growing) for the platform/data layer if the agentic pivot executes.
+- **Q7 filter**: Agentforce commercial success (ARR +169%) does NOT strengthen the Yegge moat; it shifts revenue from seat (high margin) to consumption (lower margin). Fc not dropped to Stripe's level because of immaturity (~58% accuracy) and underlying complexity.
+- **Forecast**: 🟡 Viable → 🟢 Protected (platform/data), with per-seat revenue 🟠 At risk. Calibration: June 2026.
 - Full analysis: [`examples/salesforce-2026-06.md`](../../examples/salesforce-2026-06.md).
 
 ## 🟠 AT RISK (Base ratio 2-5)
@@ -296,6 +289,7 @@ These fields help calibrate correctly and avoid the biases documented in v4.
 - **Desire Paths**: API exists but is infamous for its complexity. Anti-desire-paths.
 - **Levers**: Human coefficient (partial). The bureaucracy is a drag.
 - **Horizon**: 3-5 years (H and lock-in buy time).
+- **v5.1 note (data gravity)**: the "organizational lock-in" that slows the trajectory here is exactly the third force (Step 7c), currently half-mixed into Savings-integrations and H. It is data/process inertia, not human preference nor insight density. Apply 7c as a qualitative adjustment without counting it again; erodable as Atlassian opens the data to agents via MCP.
 - **Forecast**: 🟠 At risk → 🟡 Viable (partly protected by H)
 
 ### Holded (NEW in v4)
@@ -486,3 +480,22 @@ These fields help calibrate correctly and avoid the biases documented in v4.
 - **Stripe is the exception** that proves the rule: it has BOTH types (fraud = algorithmic,
   PCI = regulatory), which is why its Savings=90 is justified.
 - A product with ONLY regulatory savings typically deserves Savings 30-50, not 60+.
+
+### "Data gravity / switching costs" pattern (NEW in v5.1):
+- Third survival force, distinct from cognitive efficiency (ratio) and human preference (H):
+  the customer's proprietary data **already lives in the platform** and moving it is expensive
+  and risky.
+- Applies to SaaS/enterprise platforms with accumulated data: Salesforce, SAP, ServiceNow,
+  Workday, Jira.
+- Treated as a **qualitative forecast adjustment (Step 7c)**, not as a variable or a numerical
+  boost. The formula **underestimates** these cases; the system-of-record / data layer is
+  safer than its ratio.
+- **Anti-double-counting rule**: the cognitive savings from the canonical data go in Savings
+  (integrations); the human governance goes in H; **pure inertia** goes in 7c and is NOT
+  duplicated in the variables.
+- **Erosion**: the moat erodes when open standards (MCP) make the data portable to agents.
+  An agent-first platform may be eroding its own moat. Unlike social H (durable), data
+  gravity has an expiration date tied to portability-standards adoption.
+- **Common trap**: confusing "impossible to replace today due to inertia" with "the agent
+  would choose it for efficiency". They are different things; the first is 7c, the second is
+  the ratio.
