@@ -223,6 +223,33 @@ These fields help calibrate correctly and avoid the biases documented in v4.
   - **Trajectory**: ↓ → **→ bifurcating** (orchestration ↑ from MCP / financials accelerating +46% YoY, NDR 139%; design generation ↓ from Claude Design/Stitch/v0).
   - **Updated forecast**: 🟡 Viable → 🟢 Protected by H, **conditional** on executing the pivot to the orchestration layer. Attenuated by fierce competition (Step 7b).
   - Note: the 2025-2026 product expansion (Sites, Buzz, Weave) adds intermediation-exposed surface; consistent with the thesis of cutting focus to Design/Dev Mode/FigJam/Make.
+  - Full analysis: [`examples/figma-2026-06.md`](../../examples/figma-2026-06.md).
+
+### Salesforce (NEW in v5, calibration: June 2026)
+- **Type**: SaaS for humans + Platform/Marketplace + Tool for agents (emerging). Explicitly repositioning as the "operating system of the Agentic Enterprise."
+- **Absurdity test**: **DEPENDS** (weak via the engineering route). Re-synthesizing the CRM *application* (objects, workflows, a record base) would NOT be absurd; the CRM is not algorithmic insight density like PostgreSQL or Git. What IS irreplicable is the *system of record* — the customer's proprietary data accumulated over years, their specific configuration, integrations, and ecosystem. But that moat is **data + integration + inertia**, not "crystallized engineering cognition". In Yegge's strict terms (engineering insight density), the test is NO/weak; Salesforce's real moat is of another kind and is captured via H and Savings-integrations, not via a high ratio.
+- **Intermediation test**: **PARTIAL (~50%, gray zone)**. Much of the per-seat value is "a human doing cognitive work in an interface" (data entry, record updates, reports, forecasting, service-case responses) — exactly what agents now do natively. That is intermediation-exposed and a large fraction of what's paid per seat. They do NOT intermediate: custody and governance of the canonical data, compliance, security, transactional-backbone role. **Higher** than Figma (~40%) because CRM admin work is more directly automatable than design taste. Critical nuance: Agentforce **is** Salesforce automating that intermediated work — a recapture bet, not a moat.
+- **Savings type**: **Integrations + institutional/governance + data custody (system of record)**. NOT algorithmic.
+- **Geographic scope**: Global · No adjustment to Usage
+- **Savings**: 45 · **Usage**: 65 · **Kc**: 18 · **Fc**: 35 · **H**: 58
+- **Base ratio**: (45×65) / ((18+35)×10) = 2925/530 = **5.5**
+- **H decomposed**: governance/trust/oversight ~57 (erodable, 40-60 band) + organizational lock-in / switching costs / "career-risk" ~50 (inertia, not human preference — only partly captured by Yegge) + Slack social ~85 (durable slice, social-infra type). Effective ~58.
+- **H boost**: +1 category (H=58)
+- **Trajectory**: → **Bifurcating**. Orchestration/data layer ↑ (Hosted MCP GA Enterprise+, Headless 360 rollout, Agentforce ARR $800M +169% YoY, RPO +14%, owns Slack at 1B msgs/day, MCP/A2A founding member); per-seat revenue ↓ (SaaSpocalypse, stock -30% in 2026, Agentforce at ~58% task accuracy per critical sources, mature ~10% growth).
+- **Desire Paths**: Historically high friction (REST/SOAP/Bulk/Metadata APIs mature but complex, governor limits, per-org config — anti-desire-paths, Fc historically ~40, worse than Jira). Improving with Hosted MCP (GA Enterprise+), Headless 360 ("all capability as API/MCP/CLI"), Data 360 MCP (Preview), AgentExchange. **Maturity-filtered**: does not fall to Stripe's level (10) because the underlying complexity remains (Salesforce's own Data 360 MCP blog admits its API surface "saturates the LLM context") and the MCP layer is new (partly Beta/Preview) with Agentforce at ~58% accuracy.
+- **Levers**:
+  - Knowledge compression 🔴/🟡 (no algorithmic insight density; "savings" is data/integration/governance, not engineering crystallization)
+  - Substrate efficiency 🔴 (Salesforce *consumes* inference, ~20T tokens; no CPU edge)
+  - Broad utility 🟢 (global enterprise ubiquity, ~150K customers, #1 CRM)
+  - Awareness 🟢 (massive Trailhead presence, official MCP docs)
+  - Low friction / Desire paths 🟡 (improving — the key story; Hosted MCP GA, Headless 360, AgentExchange)
+  - Human coefficient 🟡 (bifurcated and partially-modeled: governance erodable + lock-in is inertia, not preference + Slack durable slice)
+- **Key caveat (methodological)**: **data gravity + switching costs + organizational inertia** are the dominant real moat and they are **under-modeled** by the formula, which measures cognitive efficiency (Savings) and human preference (H), not data gravity or organizational inertia. Taken literally, the 5.5 ratio underestimates platform survival in the short term. Reflected in the bifurcated forecast, not by forcing the variables.
+- **Horizon**: 3-5 years for per-seat CRM revenue (under compression as agents take over the work); >5 years (potentially growing) for the platform/data/orchestration layer if the pivot executes and Agentforce accuracy improves from ~58%.
+- **Competition (Step 7b)**: attacked on two fronts simultaneously — Microsoft (Dynamics 365 + Copilot + Copilot Studio) on the **agent/orchestration layer** via M365 distribution; Databricks (CustomerLake / agentic CDPs) on the **data layer** (Data 360 still "an adjunct to the CRM, not a natively governed data lake"); ServiceNow on adjacent enterprise workflow; AI-native "agent OS" startups on the systemic per-seat thesis.
+- **v5 note**: This case surfaced a methodological caveat — data gravity / switching costs are real moats that the Yegge formula under-models. Captured as a caveat in the forecast rather than by forcing the variables. The Q7 anti-bias check explicitly prevented reading Agentforce's commercial success (ARR +169%) as a moat strengthening when much of it is Salesforce automating its own intermediated per-seat work (revenue migration from high-margin seats to lower-margin consumption, not moat building).
+- **Forecast**: 🟡 Viable → 🟢 Protected (platform / data / orchestration layer) **with per-seat revenue 🟠 At risk**. Mechanical math gives 🟢 Safe (5.5 + boost +1); the bifurcation reflects what the formula doesn't fully capture and what the per-seat work is genuinely exposed to.
+- Full analysis: [`examples/salesforce-2026-06.md`](../../examples/salesforce-2026-06.md).
 
 ## 🟠 AT RISK (Base ratio 2-5)
 
