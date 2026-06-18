@@ -62,6 +62,8 @@ A live application of the framework to a case the market is actively debating. T
 
 **Read the full analysis** — binary tests, side-by-side scoring, anti-bias checklist, the 6 levers, desire-paths evaluation, competition map, and four lever-aligned recommendations — in [`examples/figma-2026-06.md`](examples/figma-2026-06.md).
 
+**A second worked case** — Salesforce. Also bifurcated, but for a different reason: its dominant moat (data gravity + switching costs + organizational inertia) sits *outside* what Yegge's formula measures well. The framework names that gap as a methodological caveat instead of forcing the variables to hit a flattering number. See [`examples/salesforce-2026-06.md`](examples/salesforce-2026-06.md) — the case is the closest the framework gets to admitting where it doesn't fit, which is exactly the "uncomfortable case" the survival analyzer is built for.
+
 ## Installing as Claude Skills
 
 Each folder is a self-contained [Claude Skill](https://docs.claude.com/en/docs/claude-code/skills) with a `SKILL.md`. To use them:
