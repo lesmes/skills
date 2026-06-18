@@ -42,6 +42,26 @@ One is diagnosis, the other is design. The survival analyzer asks *"will it last
 
 Neither tries to predict the future with false precision. They are structured ways to ask better questions and to replace hand-wavy intuition with something you can score, compare, and act on.
 
+## Quickstart — try it: Figma in June 2026
+
+A live application of the framework to a case the market is actively debating. The summary below is the output of running the `software-survival-analyzer` skill in Claude Code (Opus 4.8, max) on top of a prior research pass — public business data, product evolution, the X.com sentiment split on Figma's agentic-era fate.
+
+| Field | Value |
+|-------|-------|
+| Type | SaaS for humans + content creation + tool for agents (emerging) |
+| Absurdity test | DEPENDS (collaboration yes, design generation no) |
+| Intermediation test | PARTIAL ~40% (design generation) |
+| Base ratio (v4 baseline / 2026 evidence) | 5.5 / **6.4** |
+| Composite H | 72 (collaboration ~85 durable + design taste ~55 erodable) |
+| H boost | +1.5 categories |
+| **Final forecast** | 🟡 Viable → 🟢 Protected by H *(conditional on the orchestration pivot)* |
+| Trajectory | → Bifurcating (orchestration ↑ / design generation ↓) |
+| Horizon | 3–5 years for the design component; >5 years for the platform if it executes the pivot |
+
+**The non-obvious finding the framework surfaces**: H is not one number, it is two with very different half-lives. Figma's *multiplayer collaboration* H (~85) is durable, Slack-like. Its *design-taste* H (~55) is exactly in the band the skill flags as erodable. Figma's long-term protection does **not** rest on people wanting a human to do the design — it rests on the team wanting to collaborate on a shared artifact. That decomposition is what changes the strategic question from *"will AI design tools kill Figma?"* to *"can Figma pivot to being the system of record agents read and write to?"*.
+
+**Read the full analysis** — binary tests, side-by-side scoring, anti-bias checklist, the 6 levers, desire-paths evaluation, competition map, and four lever-aligned recommendations — in [`examples/figma-2026-06.md`](examples/figma-2026-06.md).
+
 ## Installing as Claude Skills
 
 Each folder is a self-contained [Claude Skill](https://docs.claude.com/en/docs/claude-code/skills) with a `SKILL.md`. To use them:

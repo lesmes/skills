@@ -27,3 +27,6 @@ $RECYCLE.BIN/
 # Logs / temp
 *.log
 .tmp/
+
+# Claude Code per-project local settings (keep shared settings.json if added)
+.claude/settings.local.json
